@@ -30,15 +30,15 @@ export default function Navbar() {
                         </div>
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                <a href="/" className="px-3 py-2 rounded-md text-md font-medium hover:text-gray-700 hover:bg-gray-300">Dashboards</a>
-                                <a href="#" className="px-3 py-2 rounded-md text-md font-medium hover:text-gray-700 hover:bg-gray-300">shopping</a>
-                                <a href="#" className="px-3 py-2 rounded-md text-md font-medium hover:text-gray-700 hover:bg-gray-300">Contact</a>
+                                <Link href="/dashboard" className="px-3 py-2 rounded-md text-md font-medium hover:text-gray-700 hover:bg-gray-300">Dashboards</Link>
+                                <Link href="/proyects" className="px-3 py-2 rounded-md text-md font-medium hover:text-gray-700 hover:bg-gray-300">Proyects</Link>
+                                <Link href="#" className="px-3 py-2 rounded-md text-md font-medium hover:text-gray-700 hover:bg-gray-300">Contact </Link> 
                             </div>
                         </div>
                     </div>
                     <div className="hidden md:flex items-center justify-end mr-2">
                         <button type="submit" className="group relative mt-1 flex justify-center py-2 px-4 mr-5 border border-transparent text-md font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            <Link href={"/login"}>login</Link>
+                            <Link href={"/"}>login</Link>
                         </button>
                         <button type="submit" className="group relative mt-1 flex justify-center py-2 px-4 border border-transparent text-md font-medium rounded-md text-white bg-blue-700 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             <Link href={"/register"}>Register</Link>

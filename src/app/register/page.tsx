@@ -37,11 +37,11 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen mt-[-60px] flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="mt-20 flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
       <div className="max-w-sm sm:max-w-lg w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Register your account
+            Register a new employee
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
