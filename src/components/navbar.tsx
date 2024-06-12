@@ -1,13 +1,28 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
+    useEffect(() => {
+        const handleScroll = () => {
+          const show = window.scrollY > 50;
+          if (show !== isScrolled) {
+            setIsScrolled(show);
+          }
+        };
+      
+        document.addEventListener('scroll', handleScroll);
+        return () => {
+          document.removeEventListener('scroll', handleScroll);
+        };
+      }, [isScrolled]);
+      
     return (
-        <nav className="bg-gray-700 text-gray-200">
+        <nav className={`fixed w-full z-10 bg-gray-700 text-gray-200 shadow ${isScrolled ? 'shadow-md' : ''}`}>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div className="relative flex items-center justify-between h-16">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -49,13 +64,22 @@ export default function Navbar() {
 
             {isOpen && (
                 <div className="md:hidden" id="mobile-menu">
-                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">Inicio</a>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">Servicios</a>
-                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">Contacto</a>
+                    <div className="px-2 pt-2 pb-3 text-center space-y-1 sm:px-3 flex flex-col items-center">
+                        <a href="./dashboard" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">Dashboards</a>
+                        <a href="./proyects" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">Proyects</a>
+                        <a href="#" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">Contact</a>
+                    </div>
+                    <div className="px-2 pt-2 pb-3 text-center space-y-1 sm:px-3 flex flex-col justify-center">
+                        <button type="submit" className="group relative mt-1 flex justify-center py-2 px-4 border border-transparent text-md font-medium rounded-md text-white bg-green-700 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <Link href={"/login"}>Login</Link>
+                        </button>
+                        <button type="submit" className="group relative mt-1 flex justify-center py-2 px-4 border border-transparent text-md font-medium rounded-md text-white bg-blue-700 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <Link href={"/register"}>Register</Link>
+                        </button>
                     </div>
                 </div>
             )}
+
         </nav>
     );
 }

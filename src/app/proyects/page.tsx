@@ -1,6 +1,6 @@
 'use client';
 import React, { useState,useEffect } from 'react';
-import { ClipLoader } from 'react-spinners';
+import { ImSpinner8 } from 'react-icons/im';
 
 // Definiendo una interfaz para los proyectos
 interface Project {
@@ -129,43 +129,45 @@ const projects: Project[] = [
 ];
 
 const ProjectCard: React.FC<{ project: Project, onSelected: () => void, isSingleView?: boolean }> = ({ project, onSelected, isSingleView = false }) => {
-    const [showDetails, setShowDetails] = useState(false);
-  
-    const handleShowDetails = () => {
-      setShowDetails(!showDetails);
-      onSelected(); // Siempre llama a onSelected, independientemente del estado de showDetails
-    };
-  
-    return (
-      <div className={`bg-white shadow-lg rounded-lg p-4 mb-4 ${isSingleView ? 'col-span-3' : ''}`}>
-        {!isSingleView && (
-          <img src={project.imageUrl} alt={`Imagen de ${project.name}`} className="w-full h-48 object-cover rounded-t-lg" />
-        )}
-        <div className="flex justify-around items-center">
-          <h2 className="text-xl font-bold">{project.name}</h2>
-          <button className="bg-green-400 text-white rounded mt-2 p-2" onClick={handleShowDetails}>
-            {showDetails ? 'Hide Details' : 'Show Details'}
-          </button>
-        </div>
-        {showDetails && (
-          <div className={`text-gray-600 p-2 ${isSingleView ? 'text-lg' : ''}`}>
-            {/* Estilos mejorados para la vista única */}
-            <p><strong>Actividades:</strong> {project.activities}</p>
-            <p><strong>Comentarios:</strong> {project.comments}</p>
-            <p><strong>Progreso:</strong> {project.progress}</p>
-            <p><strong>Empleado:</strong> {project.employee}</p>
-            <p><strong>Empresa:</strong> {project.company}</p>
-            <p><strong>Deadline:</strong> {project.deadline}</p>
-            <p><strong>Especialidad requerida:</strong> {project.specialty}</p>
-          </div>
-        )}
-      </div>
-    );
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleShowDetails = () => {
+    setShowDetails(!showDetails);
+    onSelected(); // Siempre llama a onSelected, independientemente del estado de showDetails
   };
+
+  return (
+    <div className={`bg-white shadow-lg rounded-lg p-4 mb-4 ${isSingleView ? 'max-w-xl mx-auto col-span-3' : ''}`}>
+      {!isSingleView && (
+        <img src={project.imageUrl} alt={`Imagen de ${project.name}`} className="w-full h-48 object-cover rounded-t-lg" />
+      )}
+      <div className="flex justify-center mt-3 items-center space-x-4 text-center">
+        <h2 className="text-xl text-gray-700 font-semibold">{project.name}</h2>
+        <button className="bg-green-400 text-white rounded p-2" onClick={handleShowDetails}>
+          {showDetails ? 'Hide Details' : 'Show Details'}
+        </button>
+      </div>
+      {showDetails && (
+        <div className={`text-gray-600 p-2 tracking-wider ${isSingleView ? 'text-lg' : ''}`}>
+          {/* Estilos mejorados para la vista única */}
+          <div className="flex flex-col justify-center items-center">
+            <p className="text-center text-gray-700 font-semibold mt-2"><strong>Actividades:</strong> {project.activities}</p>
+            <p className="text-center text-gray-700 font-semibold mt-2"><strong>Comentarios:</strong> {project.comments}</p>
+            <p className="text-center text-gray-700 font-semibold mt-2"><strong>Progreso:</strong> {project.progress}</p>
+            <p className="text-center text-gray-700 font-semibold mt-2"><strong>Empleado:</strong> {project.employee}</p>
+            <p className="text-center text-gray-700 font-semibold mt-2"><strong>Empresa:</strong> {project.company}</p>
+            <p className="text-center text-gray-700 font-semibold mt-2"><strong>Deadline:</strong> {project.deadline}</p>
+            <p className="text-center text-gray-700 font-semibold mt-2"><strong>Especialidad requerida:</strong> {project.specialty}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
   const ProjectsPage = () => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);  // El estado de loading se inicializa en true y nunca cambia.
   
     const handleSelectProject = (project: Project) => {
       setSelectedProject(selectedProject === project ? null : project);
@@ -180,8 +182,11 @@ const ProjectCard: React.FC<{ project: Project, onSelected: () => void, isSingle
   
     return (
       <div className="min-h-screen bg-gray-100 py-10">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold  text-center underline-animation text-green-700 mb-12">Proyects</h1>
+        <div className="container pt-16 mx-auto px-4">
+          <div className="flex justify-center font-century font-semibold tracking-wider text-shadow items-center text-3xl text-center text-gray-600 mb-9">
+          <h1>PROYECTS</h1>
+          <ImSpinner8 color="#32CD32" size={40} className='ml-4 mt-1 spin' style={{ animation: 'spin 2s linear infinite' }} />
+        </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {selectedProject ? (
               <ProjectCard 

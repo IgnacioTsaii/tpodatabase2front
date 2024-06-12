@@ -27,7 +27,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="mt-20 flex items-center justify-center bg-gray-50 py-100 px-4 sm:px-6 lg:px-8">
+    <div className="pt-40 flex items-center justify-center bg-gray-50 py-100 px-4 sm:px-6 lg:px-8">
       <div className="sm:max-w-lg max-w-sm w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">

@@ -23,5 +23,51 @@
 }
 
 body{
-  background-color: aliceblue;
+  background-color: white;
+}
+
+.selected {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.title {
+  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, green 50%, green 100%);
+  background-repeat: repeat-x;
+  background-size: 200% 100%;
+  animation: underline-animation 2s linear infinite;
+}
+
+@keyframes underline-animation {
+  0% { background-position: 0% 100%; }
+  100% { background-position: 100% 100%; }
+}
+
+.underline-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: green;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

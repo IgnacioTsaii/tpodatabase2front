@@ -37,7 +37,7 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="mt-20 flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <div className="pt-40 flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
       <div className="max-w-sm sm:max-w-lg w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -102,7 +102,7 @@ const RegisterPage: React.FC = () => {
 
           <div>
             <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              <Link href={"/login"}>Register</Link>
+              <Link href={"/"}>Register</Link>
             </button>
             <button type="submit" className="group relative w-full mt-1 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 <Link href={"/login"}>Back to login</Link>
