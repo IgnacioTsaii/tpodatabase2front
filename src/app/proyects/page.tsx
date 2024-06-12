@@ -183,8 +183,8 @@ const ProjectCard: React.FC<{ project: Project, onSelected: () => void, isSingle
     return (
       <div className="min-h-screen bg-gray-100 py-10">
         <div className="container pt-16 mx-auto px-4">
-          <div className="flex justify-center font-century font-semibold tracking-wider text-shadow items-center text-3xl text-center text-gray-600 mb-9">
-          <h1>PROYECTS</h1>
+          <div className="flex justify-center font-century font-semibold tracking-wider text-shadow items-center text-3xl text-center text-gray-700 mb-9">
+          <h1 className='underline-animation'>PROJECTS</h1>
           <ImSpinner8 color="#32CD32" size={40} className='ml-4 mt-1 spin' style={{ animation: 'spin 2s linear infinite' }} />
         </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

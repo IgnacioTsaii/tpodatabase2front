@@ -20,6 +20,15 @@ const config: Config = {
         'poppins': ['Poppins', 'sans-serif'],
         'century': ['Century', 'serif'],
       },
+      animation: {
+        'underline-animation': 'underline-animation 2s linear infinite',
+      },
+      keyframes: {
+        'underline-animation': {
+          '0%': { 'background-position': '0% 100%' },
+          '100%': { 'background-position': '100% 100%' },
+        },
+      },
     },
   },
   plugins: [],

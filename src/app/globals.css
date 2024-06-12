@@ -37,37 +37,22 @@ body{
   100% { transform: rotate(360deg); }
 }
 
-.title {
-  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, green 50%, green 100%);
-  background-repeat: repeat-x;
-  background-size: 200% 100%;
-  animation: underline-animation 2s linear infinite;
-}
-
-@keyframes underline-animation {
-  0% { background-position: 0% 100%; }
-  100% { background-position: 100% 100%; }
+@keyframes moveUnderline {
+  0% { left: -100%; width: 0; }
+  50% { left: 0%; width: 100%; }
+  100% { left: 100%; width: 0; }
 }
 
 .underline-animation {
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Mantiene la línea dentro de los límites del texto */
 }
 
 .underline-animation::after {
   content: '';
   position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: green;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.underline-animation:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+  bottom: -5px; /* Ajusta según la distancia deseada bajo el texto */
+  height: 5px; /* Grosor de la línea */
+  background-color: green; /* Color de la línea */
+  animation: moveUnderline 2s linear infinite;
 }
