@@ -1,20 +1,8 @@
 'use client';
 import React, { useState,useEffect } from 'react';
 import { ImSpinner8 } from 'react-icons/im';
+import { Project } from '@luca/interface/projects';
 
-// Definiendo una interfaz para los proyectos
-interface Project {
-  id: number;
-  name: string;
-  activities: string;
-  comments: string;
-  progress: string;
-  employee: string;
-  company: string;
-  deadline: string;
-  specialty: string;
-  imageUrl: string; // URL de la imagen para cada proyecto
-}
 
 // Datos de ejemplo con imágenes ficticias
 const projects: Project[] = [
@@ -139,6 +127,7 @@ const ProjectCard: React.FC<{ project: Project, onSelected: () => void, isSingle
   return (
     <div className={`bg-white shadow-lg rounded-lg p-4 mb-4 ${isSingleView ? 'max-w-xl mx-auto col-span-3' : ''}`}>
       {!isSingleView && (
+        // eslint-disable-next-line @next/next/no-img-element
         <img src={project.imageUrl} alt={`Imagen de ${project.name}`} className="w-full h-48 object-cover rounded-t-lg" />
       )}
       <div className="flex justify-center mt-3 items-center space-x-4 text-center">
